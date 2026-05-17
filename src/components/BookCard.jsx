@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function BookCard({ book }) {
+const BookCard=({ book })=> {
   return (
     <div className="border p-4 rounded shadow">
       <h2 className="text-xl font-bold">{book.title}</h2>

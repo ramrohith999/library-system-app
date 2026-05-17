@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Navbar() {
+const Navbar=()=> {
   return (
     <nav className="bg-black text-white p-4 flex gap-5">
       <Link to="/">Home</Link>
