@@ -1,16 +1,60 @@
-# React + Vite
+#  Online Library System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An Online Library System built using React, Vite, Redux Toolkit, React Router, and Tailwind CSS.  
+This project allows users to browse books, search books, view detailed information, and add new books dynamically.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+##  Home Page
+- Welcome section
+- List of book categories
+- Popular books displayed as cards
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+##  Browse Books
+- View all books
+- Filter books by category using dynamic routes
+- Search books by title or author
+- Responsive book cards with hover effects
 
-## Expanding the ESLint configuration
+## Book Details
+- Detailed information for each book
+- Book image
+- Title, author, category, description, and rating
+- Back to Browse button
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+##  Add Book
+- Add new books using a form
+- Form validation
+- Redux Toolkit used for state management
+- Newly added books appear at the top
+
+## 404 Page
+- Handles invalid routes
+- Displays invalid URL
+- Link back to Home page
+
+
+
+# Technologies Used
+
+- React
+- Vite
+- React Router DOM
+- Redux Toolkit
+- React Redux
+- Tailwind CSS
+
+
+# ⚙️ Installation
+
+1. Clone the Repository
+git clone https://github.com/ramrohith999/library-system-app.git
+2. Open the Project Folder
+cd to-do-list
+3. Install Dependencies
+npm install
+4. Start the Development Server
+npm run dev
+The application will run on:
+
+http://localhost:5173
