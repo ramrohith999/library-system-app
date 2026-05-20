@@ -3,21 +3,25 @@ import { useDispatch } from "react-redux";
 import { addBook } from "../redux/booksSlice";
 import { useNavigate } from "react-router-dom";
 
-const AddBook=()=> {
+const AddBook = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
+  // Form state
   const [formData, setFormData] = useState({
     title: "",
     author: "",
     category: "",
     description: "",
     rating: "",
+    image: "",
   });
 
+  // Error state
   const [error, setError] = useState("");
 
+  // Handle input changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -25,6 +29,7 @@ const AddBook=()=> {
     });
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -34,19 +39,28 @@ const AddBook=()=> {
       category,
       description,
       rating,
+      image,
     } = formData;
 
+    // Validation
     if (
       !title ||
       !author ||
       !category ||
       !description ||
-      !rating
+      !rating ||
+      !image
     ) {
       setError("All fields are required");
       return;
     }
 
+    if (rating < 1 || rating > 5) {
+      setError("Rating must be between 1 and 5");
+      return;
+    }
+
+    // Add new book
     dispatch(
       addBook({
         id: Date.now(),
@@ -54,68 +68,184 @@ const AddBook=()=> {
       })
     );
 
+    // Redirect after adding
     navigate("/books");
   };
 
   return (
-    <div className="p-5 max-w-xl mx-auto">
-      <h1 className="text-3xl mb-5">Add Book</h1>
+    <div className="min-h-screen flex items-center justify-center p-6">
 
-      {error && (
-        <p className="text-red-500 mb-3">
-          {error}
-        </p>
-      )}
-
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4"
+      <div
+        className="
+          bg-[#fff8ee]
+          w-full
+          max-w-2xl
+          p-8
+          rounded-3xl
+          shadow-2xl
+          border
+          border-amber-200
+        "
       >
-        <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          className="border p-2"
-          onChange={handleChange}
-        />
 
-        <input
-          type="text"
-          name="author"
-          placeholder="Author"
-          className="border p-2"
-          onChange={handleChange}
-        />
+        {/* Heading */}
+        <h1
+          className="
+            text-4xl
+            font-bold
+            text-center
+            text-amber-900
+            mb-8
+          "
+        >
+          Add New Book
+        </h1>
 
-        <input
-          type="text"
-          name="category"
-          placeholder="Category"
-          className="border p-2"
-          onChange={handleChange}
-        />
+        {/* Error */}
+        {error && (
+          <p className="text-red-600 mb-4 text-center font-medium">
+            {error}
+          </p>
+        )}
 
-        <textarea
-          name="description"
-          placeholder="Description"
-          className="border p-2"
-          onChange={handleChange}
-        />
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-5"
+        >
 
-        <input
-          type="number"
-          name="rating"
-          placeholder="Rating"
-          className="border p-2"
-          onChange={handleChange}
-        />
+          {/* Title */}
+          <input
+            type="text"
+            name="title"
+            placeholder="Book Title"
+            className="
+              border
+              border-amber-300
+              p-4
+              rounded-xl
+              bg-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-amber-400
+            "
+            onChange={handleChange}
+          />
 
-        <button className="bg-black text-white p-2 rounded">
-          Add Book
-        </button>
-      </form>
+          {/* Author */}
+          <input
+            type="text"
+            name="author"
+            placeholder="Author Name"
+            className="
+              border
+              border-amber-300
+              p-4
+              rounded-xl
+              bg-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-amber-400
+            "
+            onChange={handleChange}
+          />
+
+          {/* Category */}
+          <input
+            type="text"
+            name="category"
+            placeholder="Category"
+            className="
+              border
+              border-amber-300
+              p-4
+              rounded-xl
+              bg-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-amber-400
+            "
+            onChange={handleChange}
+          />
+
+          {/* Rating */}
+          <input
+            type="number"
+            name="rating"
+            placeholder="Rating (1-5)"
+            className="
+              border
+              border-amber-300
+              p-4
+              rounded-xl
+              bg-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-amber-400
+            "
+            onChange={handleChange}
+          />
+
+          {/* Image URL */}
+          <input
+            type="text"
+            name="image"
+            placeholder="Book Image URL"
+            className="
+              border
+              border-amber-300
+              p-4
+              rounded-xl
+              bg-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-amber-400
+            "
+            onChange={handleChange}
+          />
+
+          {/* Description */}
+          <textarea
+            name="description"
+            placeholder="Book Description"
+            rows="5"
+            className="
+              border
+              border-amber-300
+              p-4
+              rounded-xl
+              bg-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-amber-400
+            "
+            onChange={handleChange}
+          />
+
+          {/* Submit Button */}
+          <button
+            className="
+              bg-amber-800
+              hover:bg-amber-900
+              text-white
+              p-4
+              rounded-xl
+              font-semibold
+              text-lg
+              transition
+              duration-300
+              shadow-md
+              hover:shadow-xl
+              cursor-pointer
+            "
+          >
+            Add Book
+          </button>
+
+        </form>
+      </div>
     </div>
   );
-}
+};
 
 export default AddBook;
