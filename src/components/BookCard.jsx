@@ -25,13 +25,9 @@ const BookCard = ({ book }) => {
 
       {/* Card Content */}
       <div className="p-5">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">
-          {book.title}
-        </h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">{book.title}</h2>
 
-        <p className="text-gray-600 text-lg mb-1">
-            by {book.author}
-        </p>
+        <p className="text-gray-600 text-lg mb-1">by {book.author}</p>
 
         <p
           className="

@@ -8,7 +8,6 @@ const AddBook = () => {
 
   const navigate = useNavigate();
 
-  // Form state
   const [formData, setFormData] = useState({
     title: "",
     author: "",
@@ -18,7 +17,7 @@ const AddBook = () => {
     image: "",
   });
 
-  // Error state
+  
   const [error, setError] = useState("");
 
   // Handle input changes
@@ -68,7 +67,6 @@ const AddBook = () => {
       })
     );
 
-    // Redirect after adding
     navigate("/books");
   };
 
@@ -101,20 +99,20 @@ const AddBook = () => {
           Add New Book
         </h1>
 
-        {/* Error */}
+        
         {error && (
           <p className="text-red-600 mb-4 text-center font-medium">
             {error}
           </p>
         )}
 
-        {/* Form */}
+       
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-5"
         >
 
-          {/* Title */}
+          
           <input
             type="text"
             name="title"

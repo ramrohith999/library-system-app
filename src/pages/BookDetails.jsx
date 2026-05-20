@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const BookDetails=()=> {
+const BookDetails = () => {
   const { id } = useParams();
 
   const books = useSelector((state) => state.books.books);
@@ -14,9 +14,7 @@ const BookDetails=()=> {
 
   return (
     <div className="p-5">
-      <h1 className="text-4xl font-bold">
-        {book.title}
-      </h1>
+      <h1 className="text-4xl font-bold">{book.title}</h1>
 
       <p className="mt-3">Author: {book.author}</p>
 
@@ -24,14 +22,17 @@ const BookDetails=()=> {
 
       <p className="mt-3">⭐ {book.rating}</p>
 
-      <Link
-        to="/books"
-        className="text-blue-500"
-      >
+      <img
+        src={book.image}
+        alt={book.title}
+        className="w-full max-w-md rounded-xl shadow-lg mb-6"
+      />
+
+      <Link to="/books" className="text-blue-500">
         Back to Browse
       </Link>
     </div>
   );
-}
+};
 
 export default BookDetails;

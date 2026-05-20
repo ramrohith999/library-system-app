@@ -28,12 +28,12 @@ const BrowseBooks=()=> {
 
   return (
     <div className="p-5">
-      <h1 className="text-3xl mb-5">Browse Books</h1>
+      <h1 className="text-3xl mb-5 font-serif">Browse Books</h1>
 
       <input
         type="text"
         placeholder="Search by title or author"
-        className="border p-2 mb-5 w-full"
+        className="border p-2 mb-5 w-full rounded-xl shadow-lg"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
